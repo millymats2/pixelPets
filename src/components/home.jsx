@@ -1,18 +1,37 @@
-import ball from "./images/ball.png"
+import { useNavigate } from "react-router-dom";
 
 function Home (){
-    
-    return (
-<div>
-    
-        <div className="home"> 
+    var seconds = 1.5;
+    var foo; 
+    const navigate = useNavigate();
 
-            <div class="progress">
-            
-  <div class="color"><img src={ball} height={100} width={100} alt="Beach Ball" class="ball"/><h1 class="sea"> sea sprinkles</h1></div>
-</div>
+function redirect() {
+    navigate(`/character`);
+}
+
+function updateSecs() {
+    seconds--;
+    if (seconds == -1.5) {
+        clearInterval(foo);
+        redirect();
+    }
+}
+
+function countdownTimer() {
+    foo = setInterval(function () {
+        updateSecs()
+    }, 1000);
+}
+
+countdownTimer();
+    return (
+    <div>
+        <div className="home"> 
+            <div class="progress">   
+            <div class="color"><h2 class="sea"> sea sprinkles</h2></div>
         </div>
         </div>
+    </div>
     )
 }
 
