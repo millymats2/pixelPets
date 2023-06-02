@@ -19,14 +19,62 @@
   border: 0.5vh solid #ff80b3;
   background-color: #ff80b3;
   border-style: outset;
-  box-shadow: 2px 5px #f9e5ed;
   transition-property: transform;
   transition-duration: 0.3s;
   transition-timing-function: ease;
   transition-delay: 0s;
+  a{
+    color:#f9e5ed;
+  }
     &:hover{
       transform: translateY(-20px);
       background-color: #ff67a4;
       color: #f4b5ce;
+      a{
+        color:#f9e5ed;
+      }
     }
+  }
+
+  .cardbunny{
+    margin-right: 1vh;
+    margin-left: -4vh;
+    border-radius: 2vh;
+    margin-bottom: 5vh;
+    margin-top: 50px;
+    height: 300px;
+    width: 600px;
+    border: 0.5vh solid #ff80b3;
+    background-color: #ff80b3;
+    border-style: outset;
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+
+  .bunny-title{
+    display: flex;
+    gap: 20px;
+  }
+
+  .bunny-img{
+    border: 0.5vh solid #fd9ac1
+    ;
+    background-color:#f4b5ce;
+  }
+
+  .bunny-des{
+    margin-top: 2vh;
+    margin-left: 2vh;
+    display: flex;
+  }
+
+  .words{
+    padding: 10px;
+  }
+
+  .title{
+    background-color: #fabcd5;
+    width: 474px;
   }

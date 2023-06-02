@@ -28,7 +28,7 @@ countdownTimer();
     <div>
         <div className="home"> 
             <div class="progress">   
-            <div class="color"><h2 class="sea"> sea sprinkles</h2></div>
+            <div class="color"><h2 class="sea"> sea scoundrels</h2></div>
         </div>
         </div>
     </div>
