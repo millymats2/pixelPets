@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+
 :root {
   font-family: 'Press Start 2P', cursive;
   line-height: 1.5;
@@ -55,48 +56,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.home{
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translate(-40%,-40%);
-    background-color: #ffb1d0;
-  
-}
-.progress{
-  position: relative;
-  height: 10px;
-  width: 1110%;
-  border: 10px solid #ff80b3;
-  border-radius: 15px;
-  @keyframes progres{
-    0%{
-      width: 0%;
-    }
-    25%{
-        width: 50%;
-    }
-    50%{
-        width: 75%;
-    }
-    75%{
-        width: 85%;
-    }
-    100%{
-        width: 100%;
-    }
-  };
-}
-
-.progress .color{
-  position: absolute;
-  background-color: #fa65a1;
-  width: 0px;
-  height: 10px;
-  border-radius: 15px;
-  animation: progres 4s infinite linear;    
 }
 
 .sea{
