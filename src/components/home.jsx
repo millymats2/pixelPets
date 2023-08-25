@@ -29,7 +29,7 @@ countdownTimer();
     return (
     <div className="flex items-center flex-col">
         <h1 className="text-[60px] pb-2 text-[#ce6985]">SEA SCOUNDRELS</h1>
-        <div className="h-[10%] w-[20%] rounded-[50%] items-center bg-[#ed92ac]">
+        <div className="h-[10%] w-[20%] rounded-[50%] items-center border-4 border-[#ce6985] bg-[#ed92ac]">
             <div className="animate-bounce flex justify-center">
             <img src={octopus} height={150} width={150} alt="Cherry"/> 
                 </div>

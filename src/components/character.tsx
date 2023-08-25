@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import React from "react";
+import cake from "./images/cake.png"
+import Modal from 'react-modal';
+
 
 export default function Character (){
     const navigate = useNavigate();
+    const [select, setSelected] = useState();
+    const [img, setImg] = useState('');
+    const [modalOpen, setModalOpen] = useState(false); 
+    const [selectedCharacter, setSelectedCharacter] = useState(null);
 
-    const[character] =useState ([
+    const characters = [
         {"id": 1,
         "name": "CONE CONNOISSEUR",
         "description": "FOOD CRITIC",
@@ -56,12 +63,61 @@ export default function Character (){
         "body": <div>on her way to steal your <strike>man</strike> donuts.</div>,
         "picture": "https://i.imgur.com/8QXPedJ.png"
     },
-    ])
-    return (
-    <>
-    <h1 className="character-name">PICK YOUR POISON</h1>
+    ]
+
+    const onSelect = (id, picture) => {
+        setSelected(id);
+        setImg(picture);
+        const character = characters.find(char => char.id === id);
+        setSelectedCharacter(character);
+        setModalOpen(true);
+      };
     
-    </>
-    )
-}
+      const closeModal = () => {
+        setModalOpen(false);
+        setSelectedCharacter(null);
+      };
+    
+
+      return (
+        <>
+          <div>
+            <h1 className="text-[50px] text-[#ce6985]">CHOOSE YOUR DIABETES</h1>
+            <div className="flex ml-[10%] pt-16 mr-4 flex-wrap gap-[12rem] pb-8">
+              {characters.map((character) => (
+                <div
+                  key={character.id}
+                  className={`cakes ${select === character.id ? "selected" : ""}`}
+                  onClick={() => onSelect(character.id, character.picture)}
+                >
+                  <img
+                    src={select === character.id ? character.picture : cake}
+                    key={character.picture}
+                    height={100}
+                    width={100}
+                    alt="cake"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+          <Modal isOpen={modalOpen} className="bg-[#ce6985]" onRequestClose={closeModal} contentLabel="Character Modal">
+            {selectedCharacter && (
+              <div className="overflow-scroll bg-[#ce6985]">
+                <h2>{selectedCharacter.name}</h2>
+                <p>{selectedCharacter.description}</p>
+                <p>{selectedCharacter.body}</p>
+                <img src={selectedCharacter.picture}  height={100}
+                    width={100} alt={selectedCharacter.name} />
+                <button onClick={closeModal}>Close</button>
+              </div>
+            )}
+          </Modal>
+        </>
+      );
+    }
+    
+    
+    
+    
 
