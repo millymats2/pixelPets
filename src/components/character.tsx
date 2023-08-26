@@ -14,6 +14,17 @@ export default function Character (){
     const [modalOpen, setModalOpen] = useState(false); 
     const [selectedCharacter, setSelectedCharacter] = useState(null);
 
+    const customStyles = {
+        content: {
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            outline: 'none',
+            height: '20rem'
+        },
+      };
+
     const characters = [
         {"id": 1,
         "name": "CONE CONNOISSEUR",
@@ -22,8 +33,8 @@ export default function Character (){
         "picture": "https://i.imgur.com/auvhIzT.png"
     },
     {"id": 2,
-        "name": "DADDY LONG TENTACLES",
-        "description": "SHRINK",
+        "name": "DLT",
+        "description": "DADDY LONG TENTACLES",
         "body": "wisdom comes from within... the tentacles.",
         "picture": "https://i.imgur.com/L6PuG3b.png"
     },
@@ -54,7 +65,7 @@ export default function Character (){
     {"id": 7,
         "name": "GINGER 'O SNAP",
         "description": "NICE GUY",
-        "body": "sit's not him it's you.",
+        "body": "it's not him it's you.",
         "picture": "https://i.imgur.com/WZWgMwj.png"
     },
     {"id": 8,
@@ -75,7 +86,7 @@ export default function Character (){
     
       const closeModal = () => {
         setModalOpen(false);
-        setSelectedCharacter(null);
+        navigate('/character');
       };
     
 
@@ -85,7 +96,7 @@ export default function Character (){
             <h1 className="text-[50px] text-[#ce6985]">CHOOSE YOUR DIABETES</h1>
             <div className="flex ml-[10%] pt-16 mr-4 flex-wrap gap-[12rem] pb-8">
               {characters.map((character) => (
-                <div
+                <div className="animate-bounce hover:animate-spin"><div
                   key={character.id}
                   className={`cakes ${select === character.id ? "selected" : ""}`}
                   onClick={() => onSelect(character.id, character.picture)}
@@ -98,18 +109,21 @@ export default function Character (){
                     alt="cake"
                   />
                 </div>
+                </div>
               ))}
             </div>
           </div>
-          <Modal isOpen={modalOpen} className="bg-[#ce6985]" onRequestClose={closeModal} contentLabel="Character Modal">
+          <Modal isOpen={modalOpen} className=" border-[15px] bg-[#ffb4c9] rounded-[5%] border-[#ce6985]" style={customStyles} onRequestClose={closeModal} contentLabel="Character Modal">
             {selectedCharacter && (
-              <div className="overflow-scroll bg-[#ce6985]">
-                <h2>{selectedCharacter.name}</h2>
-                <p>{selectedCharacter.description}</p>
-                <p>{selectedCharacter.body}</p>
-                <img src={selectedCharacter.picture}  height={100}
+              <div className="flex flex-wrap bg-[#ffb4c9]">
+                 <img className="w-[25%] ml-2 mt-2 rounded-[50%] items-center border-4 border-[#ce6985] bg-[#ed92ac]" src={selectedCharacter.picture}  height={100}
                     width={100} alt={selectedCharacter.name} />
-                <button onClick={closeModal}>Close</button>
+                    <div className="flex flex-col gap-8">
+                <h2 className="mt-4 bg-[#ce6985] w-full ml-[10%]">{selectedCharacter.name}</h2>
+                <p className="text-[#ce6985] text-sm ml-[10%]">{selectedCharacter.description}</p>
+                </div>
+                <p className="text-sm mt-12 ml-2">{selectedCharacter.body}</p>
+                <button className="w-[14rem] rounded-[5%] ml-[20%] hover:border-[8px] hover:border-[#ce6985] mt-6 bg-[#ce6985] hover:bg-[#f993b0]" onClick={closeModal}>LET'S PLAY</button>
               </div>
             )}
           </Modal>
