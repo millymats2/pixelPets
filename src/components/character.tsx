@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import React from "react";
-import cake from "./images/cake.png"
+import oven from "./images/oven.png"
 import Modal from 'react-modal';
 
-
-export default function Character (){
+export default function Character ({onCharacterSelect}){
     const navigate = useNavigate();
     const [select, setSelected] = useState();
     const [img, setImg] = useState('');
@@ -83,11 +82,12 @@ export default function Character (){
         setSelectedCharacter(character);
         setModalOpen(true);
       };
-    
+
       const closeModal = () => {
-        setModalOpen(false);
-        navigate('/character');
+        onCharacterSelect(selectedCharacter)
+        navigate('/game');
       };
+
     
 
       return (
@@ -102,16 +102,17 @@ export default function Character (){
                   onClick={() => onSelect(character.id, character.picture)}
                 >
                   <img
-                    src={select === character.id ? character.picture : cake}
+                    src={select === character.id ? character.picture : oven}
                     key={character.picture}
                     height={100}
                     width={100}
-                    alt="cake"
+                    alt="oven"
                   />
                 </div>
                 </div>
               ))}
             </div>
+            <Character onCharacterSelect={handleCharacterSelect} />
           </div>
           <Modal isOpen={modalOpen} className=" border-[15px] bg-[#ffb4c9] rounded-[5%] border-[#ce6985]" style={customStyles} onRequestClose={closeModal} contentLabel="Character Modal">
             {selectedCharacter && (
@@ -123,7 +124,7 @@ export default function Character (){
                 <p className="text-[#ce6985] text-sm ml-[10%]">{selectedCharacter.description}</p>
                 </div>
                 <p className="text-sm mt-12 ml-2">{selectedCharacter.body}</p>
-                <button className="w-[14rem] rounded-[5%] ml-[20%] hover:border-[8px] hover:border-[#ce6985] mt-6 bg-[#ce6985] hover:bg-[#f993b0]" onClick={closeModal}>LET'S PLAY</button>
+                <button className="w-[14rem] rounded-[5%] ml-[20%] hover:border-2 hover:border-[#ce6985] mt-6 bg-[#ce6985] hover:bg-[#f993b0]" onClick={closeModal}>LET'S PLAY</button>
               </div>
             )}
           </Modal>
